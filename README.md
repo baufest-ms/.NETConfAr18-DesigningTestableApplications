@@ -7,9 +7,14 @@ En este workshop, aprenderemos buenas prácticas para diseñar aplicaciones test
 Les revelaremos una receta para refactorizar y testear código legacy. Finalmente, les propondremos un ejercicio práctico para aplicar lo visto y terminar con las manos sucias, pero el código limpio.
 
 **Leandro Goldin**
+
 LinkedIn: https://www.linkedin.com/in/leandrogoldin/
+
 Twitter: https://twitter.com/LeanGoldin
 
+
 **Christian Smirnoff**
+
 LinkedIn: https://www.linkedin.com/in/christiansmirnoff/
+
 Twitter: https://twitter.com/casmirnoff
