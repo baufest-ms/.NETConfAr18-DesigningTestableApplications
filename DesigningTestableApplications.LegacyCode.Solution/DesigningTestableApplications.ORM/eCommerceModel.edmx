@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DesigningTestableApplicationsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DesigningTestableApplicationsModelStoreContainer">
+          <EntitySet Name="Currency" EntityType="DesigningTestableApplicationsModel.Store.Currency" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer" EntityType="DesigningTestableApplicationsModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Order" EntityType="DesigningTestableApplicationsModel.Store.Order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderItem" EntityType="DesigningTestableApplicationsModel.Store.OrderItem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Price" EntityType="DesigningTestableApplicationsModel.Store.Price" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product" EntityType="DesigningTestableApplicationsModel.Store.Product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderDetail" EntityType="DesigningTestableApplicationsModel.Store.OrderDetail" store:Type="Views" store:Schema="dbo" store:Name="OrderDetail">
+            <DefiningQuery>SELECT 
+      [OrderDetail].[Id] AS [Id], 
+      [OrderDetail].[Name] AS [Name], 
+      [OrderDetail].[Quantity] AS [Quantity], 
+      [OrderDetail].[Price] AS [Price], 
+      [OrderDetail].[SubTotal] AS [SubTotal], 
+      [OrderDetail].[Code] AS [Code]
+      FROM [dbo].[OrderDetail] AS [OrderDetail]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Order_Currency" Association="DesigningTestableApplicationsModel.Store.FK_Order_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="DesigningTestableApplicationsModel.Store.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Order" Association="DesigningTestableApplicationsModel.Store.FK_OrderItem_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Product" Association="DesigningTestableApplicationsModel.Store.FK_OrderItem_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Price_Currency" Association="DesigningTestableApplicationsModel.Store.FK_Price_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Price" EntitySet="Price" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Price_Product" Association="DesigningTestableApplicationsModel.Store.FK_Price_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Price" EntitySet="Price" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="nchar" Nullable="false" MaxLength="3" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Points" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="CurrencyId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Price">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="CurrencyId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Nullable="false" Scale="4" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'DesigningTestableApplications.dbo.OrderDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Scale="4" />
+          <Property Name="SubTotal" Type="decimal" Precision="29" Scale="4" />
+          <Property Name="Code" Type="nchar" Nullable="false" MaxLength="3" />
+        </EntityType>
+        <Association Name="FK_Order_Currency">
+          <End Role="Currency" Type="DesigningTestableApplicationsModel.Store.Currency" Multiplicity="1" />
+          <End Role="Order" Type="DesigningTestableApplicationsModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="DesigningTestableApplicationsModel.Store.Customer" Multiplicity="1" />
+          <End Role="Order" Type="DesigningTestableApplicationsModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Order">
+          <End Role="Order" Type="DesigningTestableApplicationsModel.Store.Order" Multiplicity="1" />
+          <End Role="OrderItem" Type="DesigningTestableApplicationsModel.Store.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Product">
+          <End Role="Product" Type="DesigningTestableApplicationsModel.Store.Product" Multiplicity="1" />
+          <End Role="OrderItem" Type="DesigningTestableApplicationsModel.Store.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Price_Currency">
+          <End Role="Currency" Type="DesigningTestableApplicationsModel.Store.Currency" Multiplicity="1" />
+          <End Role="Price" Type="DesigningTestableApplicationsModel.Store.Price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Price">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Price_Product">
+          <End Role="Product" Type="DesigningTestableApplicationsModel.Store.Product" Multiplicity="1" />
+          <End Role="Price" Type="DesigningTestableApplicationsModel.Store.Price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Price">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetOrderDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetPrice" ReturnType="decimal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductId" Type="int" Mode="In" />
+          <Parameter Name="CurrencyId" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DesigningTestableApplicationsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DesigningTestableApplicationsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Currencies" EntityType="DesigningTestableApplicationsModel.Currency" />
+          <EntitySet Name="Customers" EntityType="DesigningTestableApplicationsModel.Customer" />
+          <EntitySet Name="Orders" EntityType="DesigningTestableApplicationsModel.Order" />
+          <EntitySet Name="OrderItems" EntityType="DesigningTestableApplicationsModel.OrderItem" />
+          <EntitySet Name="Prices" EntityType="DesigningTestableApplicationsModel.Price" />
+          <EntitySet Name="Products" EntityType="DesigningTestableApplicationsModel.Product" />
+          <EntitySet Name="OrderDetails" EntityType="DesigningTestableApplicationsModel.OrderDetail" />
+          <AssociationSet Name="FK_Order_Currency" Association="DesigningTestableApplicationsModel.FK_Order_Currency">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Price_Currency" Association="DesigningTestableApplicationsModel.FK_Price_Currency">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="Price" EntitySet="Prices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="DesigningTestableApplicationsModel.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Order" Association="DesigningTestableApplicationsModel.FK_OrderItem_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Product" Association="DesigningTestableApplicationsModel.FK_OrderItem_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Price_Product" Association="DesigningTestableApplicationsModel.FK_Price_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Price" EntitySet="Prices" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Orders" Relationship="DesigningTestableApplicationsModel.FK_Order_Currency" FromRole="Currency" ToRole="Order" />
+          <NavigationProperty Name="Prices" Relationship="DesigningTestableApplicationsModel.FK_Price_Currency" FromRole="Currency" ToRole="Price" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="DesigningTestableApplicationsModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+          <Property Type="Int32" Name="Points" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Currency" Relationship="DesigningTestableApplicationsModel.FK_Order_Currency" FromRole="Order" ToRole="Currency" />
+          <NavigationProperty Name="Customer" Relationship="DesigningTestableApplicationsModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="OrderItems" Relationship="DesigningTestableApplicationsModel.FK_OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="DesigningTestableApplicationsModel.FK_OrderItem_Order" FromRole="OrderItem" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="DesigningTestableApplicationsModel.FK_OrderItem_Product" FromRole="OrderItem" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Price">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <NavigationProperty Name="Currency" Relationship="DesigningTestableApplicationsModel.FK_Price_Currency" FromRole="Price" ToRole="Currency" />
+          <NavigationProperty Name="Product" Relationship="DesigningTestableApplicationsModel.FK_Price_Product" FromRole="Price" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="OrderItems" Relationship="DesigningTestableApplicationsModel.FK_OrderItem_Product" FromRole="Product" ToRole="OrderItem" />
+          <NavigationProperty Name="Prices" Relationship="DesigningTestableApplicationsModel.FK_Price_Product" FromRole="Product" ToRole="Price" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="SubTotal" Type="Decimal" Precision="29" Scale="4" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="true" />
+        </EntityType>
+        <Association Name="FK_Order_Currency">
+          <End Role="Currency" Type="DesigningTestableApplicationsModel.Currency" Multiplicity="1" />
+          <End Role="Order" Type="DesigningTestableApplicationsModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Price_Currency">
+          <End Role="Currency" Type="DesigningTestableApplicationsModel.Currency" Multiplicity="1" />
+          <End Role="Price" Type="DesigningTestableApplicationsModel.Price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Price">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="DesigningTestableApplicationsModel.Customer" Multiplicity="1" />
+          <End Role="Order" Type="DesigningTestableApplicationsModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Order">
+          <End Role="Order" Type="DesigningTestableApplicationsModel.Order" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OrderItem" Type="DesigningTestableApplicationsModel.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Product">
+          <End Role="Product" Type="DesigningTestableApplicationsModel.Product" Multiplicity="1" />
+          <End Role="OrderItem" Type="DesigningTestableApplicationsModel.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Price_Product">
+          <End Role="Product" Type="DesigningTestableApplicationsModel.Product" Multiplicity="1" />
+          <End Role="Price" Type="DesigningTestableApplicationsModel.Price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Price">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DesigningTestableApplicationsModelStoreContainer" CdmEntityContainer="DesigningTestableApplicationsEntities">
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="DesigningTestableApplicationsModel.Currency">
+              <MappingFragment StoreEntitySet="Currency">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="DesigningTestableApplicationsModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="DesigningTestableApplicationsModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="DesigningTestableApplicationsModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prices">
+            <EntityTypeMapping TypeName="DesigningTestableApplicationsModel.Price">
+              <MappingFragment StoreEntitySet="Price">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="DesigningTestableApplicationsModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="DesigningTestableApplicationsModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="eCommerceModel">
+        <EntityTypeShape EntityType="DesigningTestableApplicationsModel.Currency" Width="1.5" PointX="0.75" PointY="3.875" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="DesigningTestableApplicationsModel.Customer" Width="1.5" PointX="0.75" PointY="10.5" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DesigningTestableApplicationsModel.Order" Width="1.5" PointX="3" PointY="3.625" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="DesigningTestableApplicationsModel.OrderItem" Width="1.5" PointX="5.25" PointY="3.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DesigningTestableApplicationsModel.Price" Width="1.5" PointX="3" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DesigningTestableApplicationsModel.Product" Width="1.5" PointX="0.75" PointY="7.625" Height="1.9802864583333326" IsExpanded="true" />
+        <EntityTypeShape EntityType="DesigningTestableApplicationsModel.OrderDetail" Width="1.5" PointX="2.75" PointY="6.875" Height="2.1725878906250005" IsExpanded="true" />
+        <AssociationConnector Association="DesigningTestableApplicationsModel.FK_Order_Currency" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.8651432291666667" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="4.8651432291666659" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="4.8651432291666667" />
+          <ConnectorPoint PointX="3" PointY="4.8651432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="DesigningTestableApplicationsModel.FK_Price_Currency" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="3.875" />
+          <ConnectorPoint PointX="1.5" PointY="1.8362939453124998" />
+          <ConnectorPoint PointX="3" PointY="1.8362939453124998" />
+        </AssociationConnector>
+        <AssociationConnector Association="DesigningTestableApplicationsModel.FK_Order_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="11.778595377604166" />
+          <ConnectorPoint PointX="4.40625" PointY="11.778595377604166" />
+          <ConnectorPoint PointX="4.40625" PointY="5.9898893229166656" />
+        </AssociationConnector>
+        <AssociationConnector Association="DesigningTestableApplicationsModel.FK_OrderItem_Order" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="4.8362939453125" />
+          <ConnectorPoint PointX="5.25" PointY="4.8362939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="DesigningTestableApplicationsModel.FK_OrderItem_Product" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.3576871744791656" />
+          <ConnectorPoint PointX="4.322916666666667" PointY="9.3576871744791656" />
+          <ConnectorPoint PointX="4.489583333333333" PointY="9.3576871744791656" />
+          <ConnectorPoint PointX="6" PointY="9.3576871744791656" />
+          <ConnectorPoint PointX="6" PointY="5.922587890625" />
+        </AssociationConnector>
+        <AssociationConnector Association="DesigningTestableApplicationsModel.FK_Price_Product" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.4600915872395817" />
+          <ConnectorPoint PointX="2.5" PointY="8.4600915872395817" />
+          <ConnectorPoint PointX="2.5" PointY="3.2975878906249996" />
+          <ConnectorPoint PointX="3.75" PointY="3.2975878906249996" />
+          <ConnectorPoint PointX="3.75" PointY="2.9225878906249996" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,108 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesigningTestableApplications.Tip1", "DesigningTestableApplications.Tip1\DesigningTestableApplications.Tip1.csproj", "{94A19D87-7634-4C95-906B-BEA9EDCEC269}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tips", "Tips", "{4012F00E-9BBB-4CC2-A45E-CA46A7FB6ADB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5960B876-7C2E-4A6E-B55F-AFA0E931B192}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesigningTestableApplications.Tip1.Tests", "DesigningTestableApplications.Tip1.Tests\DesigningTestableApplications.Tip1.Tests.csproj", "{139613B0-949C-400B-BC60-769331F75B6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{13258B69-0D90-4558-B732-2521114BCDCC}"
+	ProjectSection(SolutionItems) = preProject
+		DesigningTestableApplications.UnitTests.vsmdi = DesigningTestableApplications.UnitTests.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesigningTestableApplications.Tip3", "DesigningTestableApplications.Tip3\DesigningTestableApplications.Tip3.csproj", "{CEA39143-51C2-4B83-AE79-E70C239D7945}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesigningTestableApplications.Tip2", "DesigningTestableApplications.Tip2\DesigningTestableApplications.Tip2.csproj", "{A937C926-E5B1-4B5A-8CF0-F84D6BF467B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesigningTestableApplications.Tip2.Tests", "DesigningTestableApplications.Tip2.Tests\DesigningTestableApplications.Tip2.Tests.csproj", "{5F10832D-7D2C-4B46-B9D4-EA863FF662FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesigningTestableApplications.Tip4.Tests", "DesigningTestableApplications.Tip4.Tests\DesigningTestableApplications.Tip4.Tests.csproj", "{2A6A2FED-8D64-423D-82DD-33761CDC2D26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesigningTestableApplications.Tip4", "DesigningTestableApplications.Tip4\DesigningTestableApplications.Tip4.csproj", "{92E20A6D-5F80-45F2-83CD-8469C7598DDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesigningTestableApplications.Tip5", "DesigningTestableApplications.Tip5\DesigningTestableApplications.Tip5.csproj", "{506B4DF0-33E9-4A9E-B3AD-2C5CEC3EA3E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesigningTestableApplications.Tip5.Tests", "DesigningTestableApplications.Tip5.Tests\DesigningTestableApplications.Tip5.Tests.csproj", "{87868050-A036-47FD-86D0-C2A21859AAFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesigningTestableApplications.Tip7", "DesigningTestableApplications.Tip7\DesigningTestableApplications.Tip7.csproj", "{FB6B48B9-4BD4-4C79-A179-F5D346875030}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesigningTestableApplications.Tip7.Tests", "DesigningTestableApplications.Tip7.Tests\DesigningTestableApplications.Tip7.Tests.csproj", "{F5035C85-9B38-46D7-AB21-B322A8392C06}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = DesigningTestableApplications.UnitTests.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94A19D87-7634-4C95-906B-BEA9EDCEC269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94A19D87-7634-4C95-906B-BEA9EDCEC269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94A19D87-7634-4C95-906B-BEA9EDCEC269}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94A19D87-7634-4C95-906B-BEA9EDCEC269}.Release|Any CPU.Build.0 = Release|Any CPU
+		{139613B0-949C-400B-BC60-769331F75B6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{139613B0-949C-400B-BC60-769331F75B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{139613B0-949C-400B-BC60-769331F75B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{139613B0-949C-400B-BC60-769331F75B6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEA39143-51C2-4B83-AE79-E70C239D7945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEA39143-51C2-4B83-AE79-E70C239D7945}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEA39143-51C2-4B83-AE79-E70C239D7945}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEA39143-51C2-4B83-AE79-E70C239D7945}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A937C926-E5B1-4B5A-8CF0-F84D6BF467B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A937C926-E5B1-4B5A-8CF0-F84D6BF467B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A937C926-E5B1-4B5A-8CF0-F84D6BF467B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A937C926-E5B1-4B5A-8CF0-F84D6BF467B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F10832D-7D2C-4B46-B9D4-EA863FF662FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F10832D-7D2C-4B46-B9D4-EA863FF662FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F10832D-7D2C-4B46-B9D4-EA863FF662FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F10832D-7D2C-4B46-B9D4-EA863FF662FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A6A2FED-8D64-423D-82DD-33761CDC2D26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A6A2FED-8D64-423D-82DD-33761CDC2D26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A6A2FED-8D64-423D-82DD-33761CDC2D26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A6A2FED-8D64-423D-82DD-33761CDC2D26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92E20A6D-5F80-45F2-83CD-8469C7598DDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92E20A6D-5F80-45F2-83CD-8469C7598DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92E20A6D-5F80-45F2-83CD-8469C7598DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92E20A6D-5F80-45F2-83CD-8469C7598DDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{506B4DF0-33E9-4A9E-B3AD-2C5CEC3EA3E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{506B4DF0-33E9-4A9E-B3AD-2C5CEC3EA3E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{506B4DF0-33E9-4A9E-B3AD-2C5CEC3EA3E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{506B4DF0-33E9-4A9E-B3AD-2C5CEC3EA3E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87868050-A036-47FD-86D0-C2A21859AAFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87868050-A036-47FD-86D0-C2A21859AAFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87868050-A036-47FD-86D0-C2A21859AAFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87868050-A036-47FD-86D0-C2A21859AAFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB6B48B9-4BD4-4C79-A179-F5D346875030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6B48B9-4BD4-4C79-A179-F5D346875030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6B48B9-4BD4-4C79-A179-F5D346875030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6B48B9-4BD4-4C79-A179-F5D346875030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5035C85-9B38-46D7-AB21-B322A8392C06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5035C85-9B38-46D7-AB21-B322A8392C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5035C85-9B38-46D7-AB21-B322A8392C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5035C85-9B38-46D7-AB21-B322A8392C06}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{94A19D87-7634-4C95-906B-BEA9EDCEC269} = {4012F00E-9BBB-4CC2-A45E-CA46A7FB6ADB}
+		{CEA39143-51C2-4B83-AE79-E70C239D7945} = {4012F00E-9BBB-4CC2-A45E-CA46A7FB6ADB}
+		{A937C926-E5B1-4B5A-8CF0-F84D6BF467B6} = {4012F00E-9BBB-4CC2-A45E-CA46A7FB6ADB}
+		{92E20A6D-5F80-45F2-83CD-8469C7598DDA} = {4012F00E-9BBB-4CC2-A45E-CA46A7FB6ADB}
+		{506B4DF0-33E9-4A9E-B3AD-2C5CEC3EA3E3} = {4012F00E-9BBB-4CC2-A45E-CA46A7FB6ADB}
+		{FB6B48B9-4BD4-4C79-A179-F5D346875030} = {4012F00E-9BBB-4CC2-A45E-CA46A7FB6ADB}
+		{139613B0-949C-400B-BC60-769331F75B6E} = {5960B876-7C2E-4A6E-B55F-AFA0E931B192}
+		{13258B69-0D90-4558-B732-2521114BCDCC} = {5960B876-7C2E-4A6E-B55F-AFA0E931B192}
+		{5F10832D-7D2C-4B46-B9D4-EA863FF662FE} = {5960B876-7C2E-4A6E-B55F-AFA0E931B192}
+		{2A6A2FED-8D64-423D-82DD-33761CDC2D26} = {5960B876-7C2E-4A6E-B55F-AFA0E931B192}
+		{87868050-A036-47FD-86D0-C2A21859AAFE} = {5960B876-7C2E-4A6E-B55F-AFA0E931B192}
+		{F5035C85-9B38-46D7-AB21-B322A8392C06} = {5960B876-7C2E-4A6E-B55F-AFA0E931B192}
+	EndGlobalSection
+EndGlobal

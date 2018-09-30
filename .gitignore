@@ -1,0 +1,9 @@
+*.suo
+bin
+obj
+*.cache
+TestResults
+*.trx
+_ReSharper*
+Debug
+*.js
